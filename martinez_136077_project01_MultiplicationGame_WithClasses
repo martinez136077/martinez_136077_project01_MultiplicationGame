@@ -1,0 +1,69 @@
+# This program helps children
+# multiply numbers by two
+
+from graphics import *
+#create a class for multiplication
+class Multiply:
+
+
+ #constructor
+ def __init__(self,num):
+ #initialize the value of instance variable
+ self.num = num
+ #declare a method that multiply by 2 and return
+ def multiply(self):
+ #return the multiplied value
+ return (self.num * 2)
+
+
+  
+#class to create the gui
+class GUI:
+
+
+#constructor that initializes the gui
+def __init__(self):
+
+
+ win = GraphWin("Multiplication Game", 400, 300)
+ win.setCoords(0.0, 0.0, 3.0, 4.0)
+ # Draw the interface
+ Text(Point(1, 3), " Enter number to multiply by 2:").draw(win)
+ Text(Point(1, 1), "Total:").draw(win)
+ inputText = Entry(Point(2.25, 3), 5)
+ inputText.setText("0")
+ inputText.draw(win)
+ outputText = Text(Point(2.25, 1), "")
+ outputText.draw(win)
+ button = Text(Point(1.5, 2.0), "Multiply")
+ button.draw(win)
+ Rectangle(Point(1, 1.5), Point(2, 2.5)).draw(win)
+  
+ # wait for a mouse click
+ win.getMouse()
+  
+ # convert input
+ fortwo = int(inputText.getText())
+ #create an object of class Multiply
+ m = Multiply(fortwo)
+ #calculate total by calling m.multiply()
+ total = m.multiply()
+  
+ # display output and change button
+ outputText.setText(round(total, 2))
+ button.setText("Quit")
+  
+ # wait for click and then quit
+ win.getMouse()
+ win.close()
+
+
+def main():
+
+
+ #create a GUI by creating an object of class GUI
+ #this will call the constructor __init__()
+ #this will create all the views
+ gui = GUI()
+
+main()
